@@ -139,6 +139,70 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
+		425839162C948841004B5C6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42BE9C402C8EF930007128F4 /* NewTaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		425839172C94884A004B5C6A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D0A2C9056F50043E13F /* NewTaskInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		425839182C948854004B5C6A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D082C9056E40043E13F /* NewTaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		425839192C94885D004B5C6A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D122C90576F0043E13F /* NewTaskRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4258391A2C94886A004B5C6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42BE9C422C8EF9A0007128F4 /* EditTaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4258391B2C948872004B5C6A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D0E2C9057350043E13F /* EditTaskInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4258391C2C948879004B5C6A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D0C2C9057160043E13F /* EditTaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4258391D2C948881004B5C6A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				42D53D102C90574E0043E13F /* EditTaskRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		42644D462C8C25AB00DC58BA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,10 +234,10 @@
 		42644D4B2C8C2C0D00DC58BA /* NewTaskScreen */ = {
 			isa = PBXGroup;
 			children = (
-				42BE9C402C8EF930007128F4 /* NewTaskViewController.swift */,
-				42D53D0A2C9056F50043E13F /* NewTaskInteractor.swift */,
-				42D53D082C9056E40043E13F /* NewTaskPresenter.swift */,
-				42D53D122C90576F0043E13F /* NewTaskRouter.swift */,
+				425839162C948841004B5C6A /* View */,
+				425839172C94884A004B5C6A /* Interactor */,
+				425839182C948854004B5C6A /* Presenter */,
+				425839192C94885D004B5C6A /* Router */,
 			);
 			path = NewTaskScreen;
 			sourceTree = "<group>";
@@ -181,10 +245,10 @@
 		42644D4C2C8C2C1D00DC58BA /* EditTaskScreen */ = {
 			isa = PBXGroup;
 			children = (
-				42BE9C422C8EF9A0007128F4 /* EditTaskViewController.swift */,
-				42D53D0E2C9057350043E13F /* EditTaskInteractor.swift */,
-				42D53D0C2C9057160043E13F /* EditTaskPresenter.swift */,
-				42D53D102C90574E0043E13F /* EditTaskRouter.swift */,
+				4258391A2C94886A004B5C6A /* View */,
+				4258391B2C948872004B5C6A /* Interactor */,
+				4258391C2C948879004B5C6A /* Presenter */,
+				4258391D2C948881004B5C6A /* Router */,
 			);
 			path = EditTaskScreen;
 			sourceTree = "<group>";
