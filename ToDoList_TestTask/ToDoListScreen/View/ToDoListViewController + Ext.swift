@@ -3,12 +3,11 @@
 //  ToDoList_TestTask
 
 import UIKit
-import CoreData
 
 // MARK: - UICollectionView DataSource
 extension ToDoListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.toDoList.count
+        return presenter.filteredTask.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -18,7 +17,7 @@ extension ToDoListViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let list = presenter.toDoList[indexPath.row]
+        let list = presenter.filteredTask[indexPath.row]
         cell.setData(from: list, index: indexPath.row)
         cell.delegate = self
         
@@ -49,7 +48,10 @@ extension ToDoListViewController: UICollectionViewDelegate {
 extension ToDoListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width * 0.9, height: 130)
+        
+        let width = view.frame.width * 0.9
+        
+        return CGSize(width: width, height: 140)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

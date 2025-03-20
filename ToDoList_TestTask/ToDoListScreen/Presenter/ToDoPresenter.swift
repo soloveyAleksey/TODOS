@@ -4,10 +4,18 @@
 
 import Foundation
 
+enum FilterTask {
+    case all
+    case open
+    case close
+}
+
 protocol ToDoPresenterProtocol: AnyObject {
     var toDoList: [ToDoStorage] { get set }
+    var filteredTask: [ToDoStorage] { get set }
     func loadData()
     func getlist(tasks: Result<TaskList, Error>)
+    func filterTasks(by type: FilterTask)
     func removeTask(at index: Int)
     func didButtonPressed(_ index: Int)
     func presentAddNewTask()
@@ -21,6 +29,7 @@ final class ToDoPresenter {
     var router: ToDoRouterProtocol
     
     var toDoList = [ToDoStorage]()
+    var filteredTask = [ToDoStorage]()
     
     init(view: ToDoListViewProtocol, interactor: ToDoInteractorProtocol, router: ToDoRouterProtocol) {
         self.view = view
@@ -32,11 +41,11 @@ final class ToDoPresenter {
 extension ToDoPresenter: ToDoPresenterProtocol {
     
     func loadData() {
-        if interactor.obtainFromStorage().isEmpty {
+        if interactor.fetchDataFromStorage().isEmpty {
             view?.startActivityIndicator()
             interactor.getTaskList()
         } else {
-            toDoList = interactor.obtainFromStorage()
+            toDoList = interactor.fetchDataFromStorage()
             view?.updateView()
         }
     }
@@ -44,13 +53,27 @@ extension ToDoPresenter: ToDoPresenterProtocol {
     func getlist(tasks: Result<TaskList, Error>) {
         switch tasks {
         case .success(let list):
-            interactor.convertToStore(from: list.todos)
-            toDoList = interactor.obtainFromStorage()
+            interactor.convertToStorage(from: list.todos)
+            toDoList = interactor.fetchDataFromStorage()
             view?.updateView()
             view?.stopActivityIndicator()
         case .failure(let error):
             view?.showAlert(with: error.localizedDescription)
         }
+    }
+    
+    func filterTasks(by type: FilterTask) {
+        switch type {
+        case .all:
+            loadData()
+            filteredTask = toDoList
+        case .open:
+            filteredTask = toDoList.filter { !$0.completed }
+        case .close:
+            filteredTask = toDoList.filter { $0.completed }
+        }
+        
+        view?.updateView()
     }
     
     func removeTask(at index: Int) {

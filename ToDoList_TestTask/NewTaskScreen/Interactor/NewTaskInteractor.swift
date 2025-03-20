@@ -17,13 +17,7 @@ final class NewTaskInteractor {
 extension NewTaskInteractor: NewTaskInteractorProtocol {
     
     func addTask(_ title: String, _ descr: String?) {
-        let task = ToDoStorage(context: storageManager.viewContext)
-        task.todo = title
-        task.todoDescription = descr
-        task.completed = false
-        task.date = Date()
-        
-        storageManager.saveContext()
+        storageManager.save(title, descr)
         presenter?.closeScreen()
     }
 }

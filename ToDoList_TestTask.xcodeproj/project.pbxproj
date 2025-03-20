@@ -38,6 +38,7 @@
 		42D53D0F2C9057350043E13F /* EditTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D53D0E2C9057350043E13F /* EditTaskInteractor.swift */; };
 		42D53D112C90574E0043E13F /* EditTaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D53D102C90574E0043E13F /* EditTaskRouter.swift */; };
 		42D53D132C90576F0043E13F /* NewTaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D53D122C90576F0043E13F /* NewTaskRouter.swift */; };
+		42EDFC022D7871A200DD626C /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDFC012D7871A200DD626C /* TaskButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		42D53D0E2C9057350043E13F /* EditTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractor.swift; sourceTree = "<group>"; };
 		42D53D102C90574E0043E13F /* EditTaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskRouter.swift; sourceTree = "<group>"; };
 		42D53D122C90576F0043E13F /* NewTaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskRouter.swift; sourceTree = "<group>"; };
+		42EDFC012D7871A200DD626C /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 				42BE9C3E2C8EE765007128F4 /* HeaderView.swift */,
 				421AD25A2C8B61A60054B26E /* ToDoListViewController.swift */,
 				4266A06F2C8F68EE009A4F1C /* ToDoListViewController + Ext.swift */,
+				42EDFC012D7871A200DD626C /* TaskButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EDFC022D7871A200DD626C /* TaskButton.swift in Sources */,
 				42644D482C8C262600DC58BA /* TaskList.swift in Sources */,
 				421AD2702C8B62B90054B26E /* NetworkService.swift in Sources */,
 				4266A0702C8F68EE009A4F1C /* ToDoListViewController + Ext.swift in Sources */,

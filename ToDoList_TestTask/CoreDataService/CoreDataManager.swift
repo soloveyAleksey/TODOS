@@ -34,6 +34,29 @@ final class CoreDataManager {
             }
         }
     }
+}
+
+// MARK: CRUD
+extension CoreDataManager {
+    
+    func save(_ title: String, _ descr: String?) {
+        let task = ToDoStorage(context: viewContext)
+        task.todo = title
+        task.todoDescription = descr
+        task.completed = false
+        task.date = Date()
+        
+        saveContext()
+    }
+    
+    func fetchData() -> [ToDoStorage] {
+        let taskFetchRequest = ToDoStorage.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        taskFetchRequest.sortDescriptors = [sortDescriptor]
+        
+        guard let result = try? viewContext.fetch(taskFetchRequest) else { return [] }
+        return result
+    }
     
     func editData(_ task: ToDoStorage, _ newTitle: String, _ newDescr: String?) {
         task.todo = newTitle
@@ -44,15 +67,22 @@ final class CoreDataManager {
         saveContext()
     }
     
-    func obtainSavedData() -> [ToDoStorage] {
-        let taskFetchRequest = ToDoStorage.fetchRequest()
-        
-        guard let result = try? viewContext.fetch(taskFetchRequest) else { return [] }
-        return result
-    }
-    
     func delete(_ task: ToDoStorage) {
         viewContext.delete(task)
         saveContext()
+    }
+}
+
+// MARK: - Converting task to storage
+extension CoreDataManager {
+    
+    func convertToStorage(from todos: [TodoList]) {
+        todos.forEach { todo in
+            let storage = ToDoStorage(context: viewContext)
+            storage.todo = todo.todo
+            storage.completed = todo.completed
+            
+            saveContext()
+        }
     }
 }

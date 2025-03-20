@@ -43,9 +43,7 @@ final class ToDoCollectionViewCell: UICollectionViewCell {
         titleLabel.attributedText = todo.completed ? strikeText(strike: todo.todo) : NSAttributedString(string: todo.todo)
         
         descriptionLabel.text = todo.todoDescription ?? ""
-        
-        let date = Date()
-        dateLabel.text = date.currentDateToString
+        dateLabel.text = todo.date.currentDateToString
         
         doneButton.tag = index
         if todo.completed {
@@ -78,11 +76,11 @@ private extension ToDoCollectionViewCell {
     
     func configureSubviews() {
         titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
         
         descriptionLabel.font = .systemFont(ofSize: 17)
         descriptionLabel.textColor = .lightGray
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = 1
         
         dateLabel.textColor = .lightGray
         dateLabel.font = .systemFont(ofSize: 17)

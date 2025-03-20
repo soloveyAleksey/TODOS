@@ -3,7 +3,6 @@
 //  ToDoList_TestTask
 
 import UIKit
-import CoreData
 
 protocol ToDoListViewProtocol: AnyObject {
     func updateView()
@@ -22,17 +21,28 @@ final class ToDoListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadData()
+        presenter.filterTasks(by: .all)
     }
     
     @objc func addTaskButtonAction() {
         presenter.presentAddNewTask()
+    }
+    
+    @objc func allTaskButtonAction() {
+        presenter.filterTasks(by: .all)
+    }
+    
+    @objc func openTaskButtonAction() {
+        presenter.filterTasks(by: .open)
+    }
+    
+    @objc func completedTaskButtonAction() {
+        presenter.filterTasks(by: .close)
     }
 }
 

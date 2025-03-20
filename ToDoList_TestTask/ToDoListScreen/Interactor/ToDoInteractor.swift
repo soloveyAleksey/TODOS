@@ -6,8 +6,8 @@ import Foundation
 
 protocol ToDoInteractorProtocol: AnyObject {
     func getTaskList()
-    func convertToStore(from todos: [TodoList]) 
-    func obtainFromStorage() -> [ToDoStorage]
+    func convertToStorage(from todos: [TodoList])
+    func fetchDataFromStorage() -> [ToDoStorage]
     func saveToStorage()
     func deleteFromStorage(_ task: ToDoStorage)
 }
@@ -33,18 +33,12 @@ extension ToDoInteractor: ToDoInteractorProtocol {
         }
     }
     
-    func convertToStore(from todos: [TodoList]) {
-        todos.forEach { todo in
-            let store = ToDoStorage(context: storageManager.viewContext)
-            store.todo = todo.todo
-            store.completed = todo.completed
-            store.date = Date()
-            storageManager.saveContext()
-        }
+    func convertToStorage(from todos: [TodoList]) {
+        storageManager.convertToStorage(from: todos)
     }
     
-    func obtainFromStorage() -> [ToDoStorage] {
-        return storageManager.obtainSavedData()
+    func fetchDataFromStorage() -> [ToDoStorage] {
+        storageManager.fetchData()
     }
     
     func saveToStorage() {
