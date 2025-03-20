@@ -77,7 +77,7 @@ extension ToDoPresenter: ToDoPresenterProtocol {
     }
     
     func removeTask(at index: Int) {
-        let task = toDoList.remove(at: index)
+        let task = filteredTask.remove(at: index)
         view?.updateView()
         interactor.deleteFromStorage(task)
     }
